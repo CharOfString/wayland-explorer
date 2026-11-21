@@ -267,6 +267,13 @@ const protocols: WaylandProtocolRegistryItem[] = [
         protocol: require('./protocols/ext-background-effect-v1.json'),
     },
     {
+        id: 'xdg-session-management-v1',
+        name: 'XDG session management',
+        source: WaylandProtocolSource.WaylandProtocols,
+        stability: WaylandProtocolStability.Staging,
+        protocol: require('./protocols/xdg-session-management-v1.json'),
+    },
+    {
         id: 'xx-input-method-v2',
         name: 'Input method v2',
         source: WaylandProtocolSource.WaylandProtocols,
@@ -321,6 +328,13 @@ const protocols: WaylandProtocolRegistryItem[] = [
         source: WaylandProtocolSource.WaylandProtocols,
         stability: WaylandProtocolStability.Experimental,
         protocol: require('./protocols/xx-zones-v1.json'),
+    },
+    {
+        id: 'xx-fractional-scale-v2',
+        name: 'Fractional scale v2',
+        source: WaylandProtocolSource.WaylandProtocols,
+        stability: WaylandProtocolStability.Experimental,
+        protocol: require('./protocols/xx-fractional-scale-v2.json'),
     },
     {
         id: 'fullscreen-shell-unstable-v1',
@@ -762,6 +776,13 @@ const protocols: WaylandProtocolRegistryItem[] = [
         protocol: require('./protocols/hyprland-workspace-image-capture-source-v1.json'),
     },
     {
+        id: 'hyprland-input-capture-v1',
+        name: 'Hyprland input capture',
+        source: WaylandProtocolSource.HyprlandProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/hyprland-input-capture-v1.json'),
+    },
+    {
         id: 'cosmic-a11y-unstable-v1',
         name: 'COSMIC a11y',
         source: WaylandProtocolSource.CosmicProtocols,
@@ -769,11 +790,25 @@ const protocols: WaylandProtocolRegistryItem[] = [
         protocol: require('./protocols/cosmic-a11y-unstable-v1.json'),
     },
     {
+        id: 'cosmic-corner-radius-unstable-v1',
+        name: 'COSMIC corner radius',
+        source: WaylandProtocolSource.CosmicProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/cosmic-corner-radius-unstable-v1.json'),
+    },
+    {
         id: 'cosmic-atspi-unstable-v1',
         name: 'COSMIC atspi',
         source: WaylandProtocolSource.CosmicProtocols,
         stability: WaylandProtocolStability.Unstable,
         protocol: require('./protocols/cosmic-atspi-unstable-v1.json'),
+        unlisted: true,
+        deprecated: [
+            {
+                name: 'cosmic_atspi_manager_v1',
+                reason: 'Removed from cosmic-protocols, no longer used by cosmic-comp',
+            },
+        ],
     },
     {
         id: 'cosmic-image-capture-source-unstable-v1',
@@ -783,11 +818,41 @@ const protocols: WaylandProtocolRegistryItem[] = [
         protocol: require('./protocols/cosmic-image-capture-source-unstable-v1.json'),
     },
     {
+        id: 'cosmic-keyboard-layout-unstable-v1',
+        name: 'COSMIC keyboard layout',
+        source: WaylandProtocolSource.CosmicProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/cosmic-keyboard-layout-unstable-v1.json'),
+    },
+    {
         id: 'cosmic-image-source-unstable-v1',
         name: 'COSMIC image source',
         source: WaylandProtocolSource.CosmicProtocols,
         stability: WaylandProtocolStability.Unstable,
         protocol: require('./protocols/cosmic-image-source-unstable-v1.json'),
+        unlisted: true,
+        deprecated: [
+            {
+                name: 'zcosmic_image_source_v1',
+                reason: 'Removed from cosmic-protocols, use ext-image-capture-source',
+            },
+            {
+                name: 'zcosmic_output_image_source_manager_v1',
+                reason: 'Removed from cosmic-protocols, use ext-image-capture-source',
+            },
+            {
+                name: 'zcosmic_workspace_image_source_manager_v1',
+                reason: 'Removed from cosmic-protocols, use ext-image-capture-source',
+            },
+            {
+                name: 'zcosmic_ext_workspace_image_source_manager_v1',
+                reason: 'Removed from cosmic-protocols, use ext-image-capture-source',
+            },
+            {
+                name: 'zcosmic_toplevel_image_source_manager_v1',
+                reason: 'Removed from cosmic-protocols, use ext-image-capture-source',
+            },
+        ],
     },
     {
         id: 'cosmic-output-management-unstable-v1',
@@ -816,6 +881,17 @@ const protocols: WaylandProtocolRegistryItem[] = [
         source: WaylandProtocolSource.CosmicProtocols,
         stability: WaylandProtocolStability.Unstable,
         protocol: require('./protocols/cosmic-screencopy-unstable-v1.json'),
+        unlisted: true,
+        deprecated: [
+            {
+                name: 'zcosmic_screencopy_manager_v1',
+                reason: 'Removed from cosmic-protocols, use ext-image-copy-capture',
+            },
+            {
+                name: 'zcosmic_screencopy_session_v1',
+                reason: 'Removed from cosmic-protocols, use ext-image-copy-capture',
+            },
+        ],
     },
     {
         id: 'cosmic-screencopy-unstable-v2',
@@ -823,6 +899,25 @@ const protocols: WaylandProtocolRegistryItem[] = [
         source: WaylandProtocolSource.CosmicProtocols,
         stability: WaylandProtocolStability.Unstable,
         protocol: require('./protocols/cosmic-screencopy-unstable-v2.json'),
+        unlisted: true,
+        deprecated: [
+            {
+                name: 'zcosmic_screencopy_manager_v2',
+                reason: 'Removed from cosmic-protocols, use ext-image-copy-capture',
+            },
+            {
+                name: 'zcosmic_screencopy_session_v2',
+                reason: 'Removed from cosmic-protocols, use ext-image-copy-capture',
+            },
+            {
+                name: 'zcosmic_screencopy_frame_v2',
+                reason: 'Removed from cosmic-protocols, use ext-image-copy-capture',
+            },
+            {
+                name: 'zcosmic_screencopy_cursor_session_v2',
+                reason: 'Removed from cosmic-protocols, use ext-image-copy-capture',
+            },
+        ],
     },
     {
         id: 'cosmic-toplevel-info-unstable-v1',
@@ -916,6 +1011,13 @@ const protocols: WaylandProtocolRegistryItem[] = [
         protocol: require('./protocols/weston-output-capture.json'),
     },
     {
+        id: 'weston-restricted-buffer',
+        name: 'Weston restricted buffer',
+        source: WaylandProtocolSource.WestonProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/weston-restricted-buffer.json'),
+    },
+    {
         id: 'weston-test',
         name: 'Weston test',
         source: WaylandProtocolSource.WestonProtocols,
@@ -930,67 +1032,95 @@ const protocols: WaylandProtocolRegistryItem[] = [
         protocol: require('./protocols/weston-touch-calibration.json'),
     },
     {
-        id: 'treeland-capture-unstable-v1',
-        name: 'Treeland capture',
+        id: 'treeland-activation-token-unstable-v1',
+        name: 'Treeland activation token',
         source: WaylandProtocolSource.TreelandProtocols,
         stability: WaylandProtocolStability.Unstable,
-        protocol: require('./protocols/treeland-capture-unstable-v1.json'),
+        protocol: require('./protocols/treeland-activation-token-unstable-v1.json'),
     },
     {
-        id: 'treeland-dde-shell-v1',
-        name: 'Treeland DDE shell',
+        id: 'treeland-active-notify-unstable-v1',
+        name: 'Treeland active notify',
         source: WaylandProtocolSource.TreelandProtocols,
         stability: WaylandProtocolStability.Unstable,
-        protocol: require('./protocols/treeland-dde-shell-v1.json'),
+        protocol: require('./protocols/treeland-active-notify-unstable-v1.json'),
     },
     {
-        id: 'treeland-foreign-toplevel-manager-v1',
-        name: 'Treeland foreign toplevel manager',
+        id: 'treeland-appearance-manager-unstable-v1',
+        name: 'Treeland appearance manager',
         source: WaylandProtocolSource.TreelandProtocols,
         stability: WaylandProtocolStability.Unstable,
-        protocol: require('./protocols/treeland-foreign-toplevel-manager-v1.json'),
+        protocol: require('./protocols/treeland-appearance-manager-unstable-v1.json'),
     },
     {
-        id: 'treeland-output-manager-v1',
-        name: 'Treeland output manager',
+        id: 'treeland-compositor-action-unstable-v1',
+        name: 'Treeland compositor action',
         source: WaylandProtocolSource.TreelandProtocols,
         stability: WaylandProtocolStability.Unstable,
-        protocol: require('./protocols/treeland-output-manager-v1.json'),
+        protocol: require('./protocols/treeland-compositor-action-unstable-v1.json'),
     },
     {
-        id: 'treeland-personalization-manager-v1',
-        name: 'Treeland personalization manager',
+        id: 'treeland-dde-shell-unstable-v2',
+        name: 'Treeland DDE shell v2',
         source: WaylandProtocolSource.TreelandProtocols,
         stability: WaylandProtocolStability.Unstable,
-        protocol: require('./protocols/treeland-personalization-manager-v1.json'),
+        protocol: require('./protocols/treeland-dde-shell-unstable-v2.json'),
     },
     {
-        id: 'treeland-shortcut-manager-v1',
-        name: 'Treeland shortcut manager',
+        id: 'treeland-foreign-toplevel-manager-unstable-v3',
+        name: 'Treeland foreign toplevel manager v3',
         source: WaylandProtocolSource.TreelandProtocols,
         stability: WaylandProtocolStability.Unstable,
-        protocol: require('./protocols/treeland-shortcut-manager-v1.json'),
+        protocol: require('./protocols/treeland-foreign-toplevel-manager-unstable-v3.json'),
     },
     {
-        id: 'treeland-virtual-output-manager-v1',
-        name: 'Treeland virtual output manager',
+        id: 'treeland-input-manager-unstable-v1',
+        name: 'Treeland input manager',
         source: WaylandProtocolSource.TreelandProtocols,
         stability: WaylandProtocolStability.Unstable,
-        protocol: require('./protocols/treeland-virtual-output-manager-v1.json'),
+        protocol: require('./protocols/treeland-input-manager-unstable-v1.json'),
     },
     {
-        id: 'treeland-wallpaper-color-v1',
-        name: 'Treeland wallpaper color',
+        id: 'treeland-keyboard-state-notify-unstable-v1',
+        name: 'Treeland keyboard state notify',
         source: WaylandProtocolSource.TreelandProtocols,
         stability: WaylandProtocolStability.Unstable,
-        protocol: require('./protocols/treeland-wallpaper-color-v1.json'),
+        protocol: require('./protocols/treeland-keyboard-state-notify-unstable-v1.json'),
     },
     {
-        id: 'treeland-window-management-v1',
-        name: 'Treeland window managment',
+        id: 'treeland-layer-shell-extension-unstable-v1',
+        name: 'Treeland layer shell extension',
         source: WaylandProtocolSource.TreelandProtocols,
         stability: WaylandProtocolStability.Unstable,
-        protocol: require('./protocols/treeland-window-management-v1.json'),
+        protocol: require('./protocols/treeland-layer-shell-extension-unstable-v1.json'),
+    },
+    {
+        id: 'treeland-output-group-manager-unstable-v1',
+        name: 'Treeland output group manager',
+        source: WaylandProtocolSource.TreelandProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/treeland-output-group-manager-unstable-v1.json'),
+    },
+    {
+        id: 'treeland-output-manager-unstable-v2',
+        name: 'Treeland output manager v2',
+        source: WaylandProtocolSource.TreelandProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/treeland-output-manager-unstable-v2.json'),
+    },
+    {
+        id: 'treeland-region-watch-unstable-v1',
+        name: 'Treeland region watch',
+        source: WaylandProtocolSource.TreelandProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/treeland-region-watch-unstable-v1.json'),
+    },
+    {
+        id: 'treeland-shortcut-manager-unstable-v3',
+        name: 'Treeland shortcut manager v3',
+        source: WaylandProtocolSource.TreelandProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/treeland-shortcut-manager-unstable-v3.json'),
     },
     {
         id: 'treeland-wallpaper-manager-unstable-v1',
@@ -1000,11 +1130,398 @@ const protocols: WaylandProtocolRegistryItem[] = [
         protocol: require('./protocols/treeland-wallpaper-manager-unstable-v1.json'),
     },
     {
+        id: 'treeland-xwindow-control-unstable-v1',
+        name: 'Treeland XWindow control',
+        source: WaylandProtocolSource.TreelandProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/treeland-xwindow-control-unstable-v1.json'),
+    },
+    {
+        id: 'treeland-appearance-unstable-v1',
+        name: 'Treeland appearance',
+        source: WaylandProtocolSource.TreelandProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/treeland-appearance-unstable-v1.json'),
+    },
+    {
+        id: 'treeland-decoration-unstable-v1',
+        name: 'Treeland decoration',
+        source: WaylandProtocolSource.TreelandProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/treeland-decoration-unstable-v1.json'),
+    },
+    {
+        id: 'treeland-output-uuid-unstable-v1',
+        name: 'Treeland output UUID',
+        source: WaylandProtocolSource.TreelandProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/treeland-output-uuid-unstable-v1.json'),
+    },
+    {
+        id: 'treeland-output-uuid-head-unstable-v1',
+        name: 'Treeland output UUID head',
+        source: WaylandProtocolSource.TreelandProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/treeland-output-uuid-head-unstable-v1.json'),
+    },
+    {
+        id: 'treeland-snap-target-unstable-v1',
+        name: 'Treeland snap target',
+        source: WaylandProtocolSource.TreelandProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/treeland-snap-target-unstable-v1.json'),
+    },
+    {
+        id: 'treeland-window-transition-unstable-v1',
+        name: 'Treeland window transition',
+        source: WaylandProtocolSource.TreelandProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/treeland-window-transition-unstable-v1.json'),
+    },
+    {
+        id: 'treeland-app-id-resolver-unstable-v2',
+        name: 'Treeland app ID resolver v2',
+        source: WaylandProtocolSource.TreelandProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/treeland-app-id-resolver-unstable-v2.json'),
+    },
+    {
+        id: 'treeland-prelaunch-splash-unstable-v2',
+        name: 'Treeland prelaunch splash v2',
+        source: WaylandProtocolSource.TreelandProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/treeland-prelaunch-splash-unstable-v2.json'),
+    },
+    {
+        id: 'treeland-screensaver-unstable-v2',
+        name: 'Treeland screensaver v2',
+        source: WaylandProtocolSource.TreelandProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/treeland-screensaver-unstable-v2.json'),
+    },
+    {
         id: 'treeland-wallpaper-shell-unstable-v1',
         name: 'Treeland wallpaper shell',
         source: WaylandProtocolSource.TreelandProtocols,
         stability: WaylandProtocolStability.Unstable,
         protocol: require('./protocols/treeland-wallpaper-shell-unstable-v1.json'),
+    },
+    {
+        id: 'treeland-remote-subsurface-unstable-v1',
+        name: 'Treeland remote subsurface',
+        source: WaylandProtocolSource.TreelandProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/treeland-remote-subsurface-unstable-v1.json'),
+    },
+    {
+        id: 'treeland-wine-window-management-unstable-v1',
+        name: 'Treeland Wine window management',
+        source: WaylandProtocolSource.TreelandProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/treeland-wine-window-management-unstable-v1.json'),
+    },
+    {
+        id: 'treeland-wine-window-state-unstable-v1',
+        name: 'Treeland Wine window state',
+        source: WaylandProtocolSource.TreelandProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/treeland-wine-window-state-unstable-v1.json'),
+    },
+    {
+        id: 'treeland-app-id-resolver-v1',
+        name: 'Treeland app ID resolver v1',
+        source: WaylandProtocolSource.TreelandProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/treeland-app-id-resolver-v1.json'),
+        deprecated: [
+            {
+                name: 'treeland_app_id_resolver_manager_v1',
+                reason: 'Superseded by treeland-app-id-resolver-unstable-v2',
+            },
+            {
+                name: 'treeland_app_id_resolver_v1',
+                reason: 'Superseded by treeland-app-id-resolver-unstable-v2',
+            },
+        ],
+    },
+    {
+        id: 'treeland-capture-unstable-v1',
+        name: 'Treeland capture',
+        source: WaylandProtocolSource.TreelandProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/treeland-capture-unstable-v1.json'),
+        deprecated: [
+            {
+                name: 'treeland_capture_session_v1',
+                reason: 'Superseded by ext-image-capture-source and ext-image-copy-capture',
+            },
+            {
+                name: 'treeland_capture_frame_v1',
+                reason: 'Superseded by ext-image-capture-source and ext-image-copy-capture',
+            },
+            {
+                name: 'treeland_capture_context_v1',
+                reason: 'Superseded by ext-image-capture-source and ext-image-copy-capture',
+            },
+            {
+                name: 'treeland_capture_manager_v1',
+                reason: 'Superseded by ext-image-capture-source and ext-image-copy-capture',
+            },
+        ],
+    },
+    {
+        id: 'treeland-dde-shell-v1',
+        name: 'Treeland DDE shell v1',
+        source: WaylandProtocolSource.TreelandProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/treeland-dde-shell-v1.json'),
+        deprecated: [
+            {
+                name: 'treeland_dde_shell_manager_v1',
+                reason: 'Superseded by treeland-dde-shell-unstable-v2',
+            },
+            {
+                name: 'treeland_window_overlap_checker',
+                reason: 'Superseded by treeland-dde-shell-unstable-v2',
+            },
+            {
+                name: 'treeland_dde_shell_surface_v1',
+                reason: 'Superseded by treeland-dde-shell-unstable-v2',
+            },
+            {
+                name: 'treeland_dde_active_v1',
+                reason: 'Superseded by treeland-dde-shell-unstable-v2',
+            },
+            {
+                name: 'treeland_multitaskview_v1',
+                reason: 'Superseded by treeland-dde-shell-unstable-v2',
+            },
+            {
+                name: 'treeland_window_picker_v1',
+                reason: 'Superseded by treeland-dde-shell-unstable-v2',
+            },
+            {
+                name: 'treeland_lockscreen_v1',
+                reason: 'Superseded by treeland-dde-shell-unstable-v2',
+            },
+        ],
+    },
+    {
+        id: 'treeland-ddm-v1',
+        name: 'Treeland DDM',
+        source: WaylandProtocolSource.TreelandProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/treeland-ddm-v1.json'),
+        deprecated: [
+            {
+                name: 'treeland_ddm_v1',
+                reason: 'No longer needed by Treeland',
+            },
+        ],
+    },
+    {
+        id: 'treeland-foreign-toplevel-manager-v1',
+        name: 'Treeland foreign toplevel manager v1',
+        source: WaylandProtocolSource.TreelandProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/treeland-foreign-toplevel-manager-v1.json'),
+        deprecated: [
+            {
+                name: 'treeland_foreign_toplevel_manager_v1',
+                reason: 'Superseded by treeland-foreign-toplevel-manager-unstable-v3',
+            },
+            {
+                name: 'treeland_foreign_toplevel_handle_v1',
+                reason: 'Superseded by treeland-foreign-toplevel-manager-unstable-v3',
+            },
+            {
+                name: 'treeland_dock_preview_context_v1',
+                reason: 'Superseded by treeland-foreign-toplevel-manager-unstable-v3',
+            },
+        ],
+    },
+    {
+        id: 'treeland-foreign-toplevel-manager-unstable-v2',
+        name: 'Treeland foreign toplevel manager v2',
+        source: WaylandProtocolSource.TreelandProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/treeland-foreign-toplevel-manager-unstable-v2.json'),
+        deprecated: [
+            {
+                name: 'treeland_foreign_toplevel_manager_v2',
+                reason: 'Superseded by treeland-foreign-toplevel-manager-unstable-v3',
+            },
+            {
+                name: 'treeland_foreign_toplevel_handle_v2',
+                reason: 'Superseded by treeland-foreign-toplevel-manager-unstable-v3',
+            },
+            {
+                name: 'treeland_dock_preview_context_v2',
+                reason: 'Superseded by treeland-foreign-toplevel-manager-unstable-v3',
+            },
+        ],
+    },
+    {
+        id: 'treeland-output-manager-v1',
+        name: 'Treeland output manager v1',
+        source: WaylandProtocolSource.TreelandProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/treeland-output-manager-v1.json'),
+        deprecated: [
+            {
+                name: 'treeland_output_manager_v1',
+                reason: 'Superseded by treeland-output-manager-unstable-v2',
+            },
+            {
+                name: 'treeland_output_color_control_v1',
+                reason: 'Superseded by treeland-output-manager-unstable-v2',
+            },
+        ],
+    },
+    {
+        id: 'treeland-personalization-manager-v1',
+        name: 'Treeland personalization manager',
+        source: WaylandProtocolSource.TreelandProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/treeland-personalization-manager-v1.json'),
+        deprecated: [
+            {
+                name: 'treeland_personalization_manager_v1',
+                reason: 'Split into treeland-appearance, treeland-appearance-manager and treeland-decoration',
+            },
+            {
+                name: 'treeland_personalization_cursor_context_v1',
+                reason: 'Split into treeland-appearance, treeland-appearance-manager and treeland-decoration',
+            },
+            {
+                name: 'treeland_personalization_window_context_v1',
+                reason: 'Split into treeland-appearance, treeland-appearance-manager and treeland-decoration',
+            },
+            {
+                name: 'treeland_personalization_font_context_v1',
+                reason: 'Split into treeland-appearance, treeland-appearance-manager and treeland-decoration',
+            },
+            {
+                name: 'treeland_personalization_appearance_context_v1',
+                reason: 'Split into treeland-appearance, treeland-appearance-manager and treeland-decoration',
+            },
+        ],
+    },
+    {
+        id: 'treeland-prelaunch-splash-v1',
+        name: 'Treeland prelaunch splash v1',
+        source: WaylandProtocolSource.TreelandProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/treeland-prelaunch-splash-v1.json'),
+        deprecated: [
+            {
+                name: 'treeland_prelaunch_splash_manager_v1',
+                reason: 'Superseded by treeland-prelaunch-splash-unstable-v2',
+            },
+        ],
+    },
+    {
+        id: 'treeland-screensaver-v1',
+        name: 'Treeland screensaver v1',
+        source: WaylandProtocolSource.TreelandProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/treeland-screensaver-v1.json'),
+        deprecated: [
+            {
+                name: 'treeland_screensaver_v1',
+                reason: 'Superseded by treeland-screensaver-unstable-v2',
+            },
+        ],
+    },
+    {
+        id: 'treeland-shortcut-manager-v1',
+        name: 'Treeland shortcut manager v1',
+        source: WaylandProtocolSource.TreelandProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/treeland-shortcut-manager-v1.json'),
+        deprecated: [
+            {
+                name: 'treeland_shortcut_manager_v1',
+                reason: 'Superseded by treeland-shortcut-manager-unstable-v3',
+            },
+            {
+                name: 'treeland_shortcut_context_v1',
+                reason: 'Superseded by treeland-shortcut-manager-unstable-v3',
+            },
+        ],
+    },
+    {
+        id: 'treeland-shortcut-manager-v2',
+        name: 'Treeland shortcut manager v2',
+        source: WaylandProtocolSource.TreelandProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/treeland-shortcut-manager-v2.json'),
+        deprecated: [
+            {
+                name: 'treeland_shortcut_manager_v2',
+                reason: 'Superseded by treeland-shortcut-manager-unstable-v3',
+            },
+            {
+                name: 'treeland_shortcut_capture_v1',
+                reason: 'Superseded by treeland-shortcut-manager-unstable-v3',
+            },
+        ],
+    },
+    {
+        id: 'treeland-show-desktop-unstable-v1',
+        name: 'Treeland show desktop',
+        source: WaylandProtocolSource.TreelandProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/treeland-show-desktop-unstable-v1.json'),
+        deprecated: [
+            {
+                name: 'treeland_show_desktop_v1',
+                reason: 'Use the show_desktop action of treeland-compositor-action',
+            },
+        ],
+    },
+    {
+        id: 'treeland-virtual-output-manager-v1',
+        name: 'Treeland virtual output manager',
+        source: WaylandProtocolSource.TreelandProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/treeland-virtual-output-manager-v1.json'),
+        deprecated: [
+            {
+                name: 'treeland_virtual_output_manager_v1',
+                reason: 'Superseded by treeland-output-group-manager',
+            },
+            {
+                name: 'treeland_virtual_output_v1',
+                reason: 'Superseded by treeland-output-group-manager',
+            },
+        ],
+    },
+    {
+        id: 'treeland-wallpaper-color-v1',
+        name: 'Treeland wallpaper color',
+        source: WaylandProtocolSource.TreelandProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/treeland-wallpaper-color-v1.json'),
+        deprecated: [
+            {
+                name: 'treeland_wallpaper_color_manager_v1',
+                reason: 'Deprecated by Treeland without replacement',
+            },
+        ],
+    },
+    {
+        id: 'treeland-window-management-v1',
+        name: 'Treeland window management',
+        source: WaylandProtocolSource.TreelandProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/treeland-window-management-v1.json'),
+        deprecated: [
+            {
+                name: 'treeland_window_management_v1',
+                reason: 'Use the show_desktop action of treeland-compositor-action',
+            },
+        ],
     },
     {
         id: 'river-control-unstable-v1',
@@ -1082,6 +1599,82 @@ const protocols: WaylandProtocolRegistryItem[] = [
         source: WaylandProtocolSource.RiverProtocols,
         stability: WaylandProtocolStability.Unstable,
         protocol: require('./protocols/river-xkb-config-v1.json'),
+    },
+    {
+        id: 'frog-color-management-v1',
+        name: 'Frog color management',
+        source: WaylandProtocolSource.GamescopeProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/frog-color-management-v1.json'),
+    },
+    {
+        id: 'gamescope-action-binding',
+        name: 'Gamescope action binding',
+        source: WaylandProtocolSource.GamescopeProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/gamescope-action-binding.json'),
+    },
+    {
+        id: 'gamescope-control',
+        name: 'Gamescope control',
+        source: WaylandProtocolSource.GamescopeProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/gamescope-control.json'),
+    },
+    {
+        id: 'gamescope-input-method',
+        name: 'Gamescope input method',
+        source: WaylandProtocolSource.GamescopeProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/gamescope-input-method.json'),
+    },
+    {
+        id: 'gamescope-limiter',
+        name: 'Gamescope frame limiter',
+        source: WaylandProtocolSource.GamescopeProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/gamescope-limiter.json'),
+    },
+    {
+        id: 'gamescope-pipewire',
+        name: 'Gamescope PipeWire',
+        source: WaylandProtocolSource.GamescopeProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/gamescope-pipewire.json'),
+    },
+    {
+        id: 'gamescope-private',
+        name: 'Gamescope private',
+        source: WaylandProtocolSource.GamescopeProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/gamescope-private.json'),
+    },
+    {
+        id: 'gamescope-reshade',
+        name: 'Gamescope ReShade',
+        source: WaylandProtocolSource.GamescopeProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/gamescope-reshade.json'),
+    },
+    {
+        id: 'gamescope-swapchain',
+        name: 'Gamescope swapchain',
+        source: WaylandProtocolSource.GamescopeProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/gamescope-swapchain.json'),
+    },
+    {
+        id: 'gamescope-xwayland',
+        name: 'Gamescope Xwayland',
+        source: WaylandProtocolSource.GamescopeProtocols,
+        stability: WaylandProtocolStability.Unstable,
+        protocol: require('./protocols/gamescope-xwayland.json'),
+        deprecated: [
+            {
+                name: 'gamescope_xwayland',
+                reason: 'Superseded by gamescope-swapchain',
+            },
+        ],
     },
     {
         id: 'wayland-drm',
@@ -1249,6 +1842,9 @@ const protocols: WaylandProtocolRegistryItem[] = [
 
 class WaylandProtocolRegistry {
     protocols = protocols
+
+    /** Protocols shown on the homepage and in the navigation menu. */
+    listedProtocols = protocols.filter(({ unlisted }) => !unlisted)
 
     getProtocolWithMetadata(
         protocolId: string

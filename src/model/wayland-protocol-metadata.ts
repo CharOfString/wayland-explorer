@@ -15,6 +15,7 @@ export enum WaylandProtocolSource {
     WestonProtocols = 'weston-protocols',
     TreelandProtocols ='treeland-protocols',
     RiverProtocols ='river-protocols',
+    GamescopeProtocols = 'gamescope-protocols',
     External = 'external',
 }
 
@@ -30,4 +31,9 @@ export interface WaylandProtocolMetadata {
     stability: WaylandProtocolStability
     externalUrl?: string
     deprecated?: WaylandDeprecationItem[]
+    /**
+     * Keep the protocol's page, but leave it out of the homepage and the
+     * navigation menu (e.g. for protocols removed upstream).
+     */
+    unlisted?: boolean
 }

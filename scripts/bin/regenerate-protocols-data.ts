@@ -17,10 +17,15 @@ const relativeProtocolDirs = [
     path.join('protocols', 'kde', 'src', 'protocols'),
     path.join('protocols', 'hyprland', 'protocols'),
     path.join('protocols', 'weston', 'protocol'),
-    path.join('protocols', 'treeland', 'xml'),
+    path.join('protocols', 'treeland', 'dde'),
+    path.join('protocols', 'treeland', 'deprecated'),
+    path.join('protocols', 'treeland', 'internal'),
+    path.join('protocols', 'treeland', 'public'),
+    path.join('protocols', 'treeland', 'wine'),
     path.join('protocols', 'external'),
     path.join('protocols', 'cosmic', 'unstable'),
     path.join('protocols', 'river', 'protocol'),
+    path.join('protocols', 'gamescope', 'protocol'),
 ]
 
 const jsonFilePathFor = (protocolId: string): string =>
@@ -59,7 +64,14 @@ const deprecatedProtocols = [
      * Ignore duplicate
      */
     'river/protocol/wlr-layer-shell-unstable-v1.xml',
-    'river/protocol/wlr-output-power-management-unstable-v1.xml'
+    'river/protocol/wlr-output-power-management-unstable-v1.xml',
+    /**
+     * Ignore protocols vendored by Gamescope (already provided by
+     * wayland-protocols and wlr-protocols)
+     */
+    'gamescope/protocol/color-management-v1.xml',
+    'gamescope/protocol/wlr-layer-shell-unstable-v1.xml',
+    'gamescope/protocol/xdg-toplevel-icon-v1.xml',
 ]
 
 interface WaylandProtocolWithId extends WaylandProtocol {
